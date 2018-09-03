@@ -1,8 +1,24 @@
 # VS code settings
 
-- `ctrl` + `shift` + `p`
-- type **settings**
-- select **user settings**
+- <kbd>Ctl</kbd>+<kbd>,</kbd>
 - copy the content from `settings.json` to the user settings tab
+- hit: <kbd>Ctl</kbd>+<kbd>P</kbd> and type for every item: 
+  - Extensions:
+  - `ext install MS-vsliveshare.vsliveshare` (*vscode live share*)
+  - `ext install ms-vscode.Go` (*Golang*)
+  - THEMES:
+  - `ext install zhuangtongfa.Material-theme` (*atom one dark*)
+  - `ext install PKief.material-icon-theme` (*Material Icon*)
+  - `ext install dracula-theme.theme-dracula` (*Dracula Official*)
+  - `ext install akamud.vscode-theme-onedark` (*Atom One Dark*)
+  - `ext install vangware.dark-plus-material` (*Dark Material*)
+  - `ext install azemoh.one-monokai` (*One Monokai*)
+  - `ext install idleberg.hopscotch` (*Hopscotch*)
+  - `ext install arcticicestudio.nord-visual-studio-code` (*Nord*)
+  - `ext install file-icons.file-icons` (*file-icons*)
+  - `ext install ms-vscode.Theme-MarkdownKit` (*Markdown Theme Kit*)
+  - `ext install lkytal.FlatUI` (*Flat UI*)
+  - `ext install monokai.theme-monokai-pro-vscode` (*Monokai*)
+  - `ext install ms-vscode.Theme-MaterialKit` (*Material Kit*)
+  - `ext install tinkertrain.theme-panda` (*Panda*)
 - restart vscode
-- hit: <kbd>Ctl</kbd>+<kbd>P</kbd> and type: `ext install MS-vsliveshare.vsliveshare`
