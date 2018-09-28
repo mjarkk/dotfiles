@@ -5,5 +5,11 @@
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "editor.fontFamily": "Operator Mono, Consolas, 'Courier New', monospace",
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "files.insertFinalNewline": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0,
+  "workbench.startupEditor": "newUntitledFile",
+  "git.autofetch": true,
+  "alex.enable": true
 }
