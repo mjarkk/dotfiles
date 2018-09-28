@@ -6,6 +6,7 @@
   - Extensions:
   - `ext install MS-vsliveshare.vsliveshare` (*vscode live share*)
   - `ext install ms-vscode.Go` (*Golang*)
+  - `ext install shinnn.alex` (*Correct inappropriate language*)
   - THEMES:
   - `ext install zhuangtongfa.Material-theme` (*atom one dark*)
   - `ext install PKief.material-icon-theme` (*Material Icon*)
