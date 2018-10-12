@@ -4,6 +4,8 @@
 - copy the content from `settings.json` to the user settings tab
 - hit: <kbd>Ctl</kbd>+<kbd>P</kbd> and type for every item: 
   - Extensions:
+  - `ext install WallabyJs.wallaby-vscode` (*wallabyJs*)
+  - `ext install WallabyJs.quokka-vscode` (*quokkaJs*)
   - `ext install MS-vsliveshare.vsliveshare` (*vscode live share*)
   - `ext install ms-vscode.Go` (*Golang*)
   - `ext install shinnn.alex` (*Correct inappropriate language*)
