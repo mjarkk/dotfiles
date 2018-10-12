@@ -1,27 +1,30 @@
 # VS code settings
 
-- <kbd>Ctl</kbd>+<kbd>,</kbd>
-- copy the content from `settings.json` to the user settings tab
-- hit: <kbd>Ctl</kbd>+<kbd>P</kbd> and type for every item: 
-  - Extensions:
-  - `ext install WallabyJs.wallaby-vscode` (*wallabyJs*)
-  - `ext install WallabyJs.quokka-vscode` (*quokkaJs*)
-  - `ext install MS-vsliveshare.vsliveshare` (*vscode live share*)
-  - `ext install ms-vscode.Go` (*Golang*)
-  - `ext install shinnn.alex` (*Correct inappropriate language*)
-  - THEMES:
-  - `ext install zhuangtongfa.Material-theme` (*atom one dark*)
-  - `ext install PKief.material-icon-theme` (*Material Icon*)
-  - `ext install dracula-theme.theme-dracula` (*Dracula Official*)
-  - `ext install akamud.vscode-theme-onedark` (*Atom One Dark*)
-  - `ext install vangware.dark-plus-material` (*Dark Material*)
-  - `ext install azemoh.one-monokai` (*One Monokai*)
-  - `ext install idleberg.hopscotch` (*Hopscotch*)
-  - `ext install arcticicestudio.nord-visual-studio-code` (*Nord*)
-  - `ext install file-icons.file-icons` (*file-icons*)
-  - `ext install ms-vscode.Theme-MarkdownKit` (*Markdown Theme Kit*)
-  - `ext install lkytal.FlatUI` (*Flat UI*)
-  - `ext install monokai.theme-monokai-pro-vscode` (*Monokai*)
-  - `ext install ms-vscode.Theme-MaterialKit` (*Material Kit*)
-  - `ext install tinkertrain.theme-panda` (*Panda*)
-- restart vscode
+Extensions:  
+```
+code \
+--install-extension WallabyJs.wallaby-vscode\
+--install-extension WallabyJs.quokka-vscode\
+--install-extension MS-vsliveshare.vsliveshare\
+--install-extension ms-vscode.Go\
+--install-extension shinnn.alex
+```
+  
+Themes:
+```
+code \
+--install-extension zhuangtongfa.Material-theme\
+--install-extension PKief.material-icon-theme\
+--install-extension dracula-theme.theme-dracula\
+--install-extension akamud.vscode-theme-onedark\
+--install-extension vangware.dark-plus-material\
+--install-extension azemoh.one-monokai\
+--install-extension idleberg.hopscotch\
+--install-extension arcticicestudio.nord-visual-studio-code\
+--install-extension file-icons.file-icons\
+--install-extension ms-vscode.Theme-MarkdownKit\
+--install-extension lkytal.FlatUI\
+--install-extension monokai.theme-monokai-pro-vscode\
+--install-extension ms-vscode.Theme-MaterialKit\
+--install-extension tinkertrain.theme-panda
+```
