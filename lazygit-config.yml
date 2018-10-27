@@ -1,0 +1,20 @@
+# To use:
+# mkdir -p~/.config/jesseduffield/lazygit 
+# cp lazygit-config.yml ~/.config/jesseduffield/lazygit/config.yml
+reporting: "off"
+gui:
+  scrollHeight: 2
+  theme:
+    activeBorderColor:
+      - red
+      - magenta
+    inactiveBorderColor:
+      - red
+    optionsTextColor:
+      - red
+  commitLength:
+    show: true
+update:
+  method: never
+  days: 14
+confirmOnQuit: false
