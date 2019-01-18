@@ -1,5 +1,11 @@
 # dotfiles
 This repo contains all my config files
 
-## .bashrc
-NOTE: Only for Arch 
+## Fash shell
+file: `.bashrc`  
+location: `~/`  
+NOTE: Only for Arch  
+
+## Fish shell
+file `config.fish`  
+location: `~/.config/fish/`  
