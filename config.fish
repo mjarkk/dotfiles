@@ -1,6 +1,8 @@
 set -Ux GOPATH $HOME/go
 set -x PATH $GOPATH/bin $PATH
 
+alias spotify='spotify --force-device-scale-factor=2 $argv'
+
 function lg
   lazygit $argv
 end
@@ -17,3 +19,7 @@ function pacup
   sudo pacman -Syuu
 end
 
+function aptup
+  sudo apt update -y
+  sudo apt upgrade -y
+end
