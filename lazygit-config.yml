@@ -1,5 +1,5 @@
 # To use:
-# mkdir -p~/.config/jesseduffield/lazygit 
+# mkdir -p ~/.config/jesseduffield/lazygit
 # cp lazygit-config.yml ~/.config/jesseduffield/lazygit/config.yml
 reporting: "off"
 gui:
