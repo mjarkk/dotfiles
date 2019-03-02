@@ -11,8 +11,18 @@
     "window.zoomLevel": 0,
     "workbench.startupEditor": "newUntitledFile",
     "git.autofetch": true,
-    "alex.enable": true,
-    "workbench.colorTheme": "Panda Syntax",
+    "workbench.colorTheme": "Monokai Pro",
     "editor.multiCursorModifier": "ctrlCmd",
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "languageStylus.useSeparator": false,
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.tips.enabled": false,
+    "search.exclude": {
+        "**/vendor": true,
+    },
+    "problems.decorations.enabled": false,
+    "update.enableWindowsBackgroundUpdates": false,
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "right"
 }
