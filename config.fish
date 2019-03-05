@@ -1,5 +1,6 @@
 set -Ux GOPATH $HOME/go
 set -x PATH $GOPATH/bin $PATH
+set -x PATH $HOME/.cargo/bin $PATH
 
 alias spotify='spotify --force-device-scale-factor=2 $argv'
 
