@@ -29,6 +29,7 @@ code \
 --install-extension tinkertrain.theme-panda \
 --install-extension wayou.vscode-todo-highlight \
 --install-extension MS-vsliveshare.vsliveshare \
+--install-extension rust-lang.rust
 ```
 
 ## 2 - Set settings

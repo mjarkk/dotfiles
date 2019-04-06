@@ -24,5 +24,6 @@
     "problems.decorations.enabled": false,
     "update.enableWindowsBackgroundUpdates": false,
     "editor.minimap.enabled": false,
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "right",
+    "workbench.list.keyboardNavigation": "simple"
 }
