@@ -1,6 +1,9 @@
 # VS code settings
 
-## 1 - Install extensions and themes
+## 1 - Get the FiraCode font
+See https://github.com/tonsky/FiraCode for how to install.
+
+## 2 - Install extensions and themes
 NOTE: this might take a while    
 ```
 code \
@@ -32,7 +35,7 @@ code \
 --install-extension rust-lang.rust
 ```
 
-## 2 - Set settings
+## 3 - Set settings
 1. <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> 
 2. Type `settings`
 3. Click on: `Preferences: Open settings (JSON)`
