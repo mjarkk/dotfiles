@@ -19,6 +19,7 @@ alias spotify='spotify --force-device-scale-factor=2 $argv'
 
 # Some general shotcuts for programs
 alias lg='lazygit $argv'
+alias ld='lazydocker $argv'
 alias ss='sudo systemctl $argv'
 alias c='code ./'
 
