@@ -11,6 +11,10 @@ set -x PATH $HOME/.cargo/bin $PATH
 # this stops the anoying gpg agent
 set -Ux GPG_AGENT_INFO ""
 
+# Alias vim to nvim
+alias vi='nvim $argv'
+alias vim='nvim $argv'
+
 # add scale factor 2 to spotify, otherwhise the UI is really small on 4k screens with 2x scaling
 alias spotify='spotify --force-device-scale-factor=2 $argv'
 
