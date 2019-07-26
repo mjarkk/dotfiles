@@ -9,22 +9,44 @@
     "files.insertFinalNewline": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "window.zoomLevel": 0,
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "git.autofetch": true,
-    "workbench.colorTheme": "Dobri Next -A02- Bunker",
+    "workbench.colorTheme": "Dobri Next -C08- Darcula",
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.iconTheme": "Monokai Pro Icons",
     "languageStylus.useSeparator": false,
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.tips.enabled": false,
     "search.exclude": {
         "**/vendor": true,
     },
-    "problems.decorations.enabled": false,
-    "update.enableWindowsBackgroundUpdates": false,
+    "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "workbench.sideBar.location": "right",
     "workbench.list.keyboardNavigation": "simple",
     "editor.fontWeight": "500",
-    "editor.fontLigatures": true
+    "cSpell.enabledLanguageIds": [
+        "markdown"
+    ],
+    "cSpell.language": "nl,nl-NL,en",
+    "editor.cursorBlinking": "smooth",
+    "editor.find.addExtraSpaceOnTop": false,
+    "editor.fontLigatures": true,
+    "files.watcherExclude": {
+        "**/vendor/**": true
+    },
+    "workbench.enableExperiments": false,
+    "workbench.useExperimentalGridLayout": true,
+    "workbench.tips.enabled": false,
+    "workbench.tree.indent": 16,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.settings.useSplitJSON": true,
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideActivityBar": false,
+    "zenMode.hideTabs": false,
+    "window.menuBarVisibility": "toggle",
+    "window.restoreFullscreen": true,
+    "window.title": "${dirty}${activeEditorShort} <> ${rootName}",
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.experimentalRefreshOnResume": true
 }
+
