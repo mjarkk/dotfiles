@@ -11,7 +11,7 @@
     "window.zoomLevel": 0,
     "workbench.startupEditor": "none",
     "git.autofetch": true,
-    "workbench.colorTheme": "Dobri Next -C08- Darcula",
+    "workbench.colorTheme": "Base16 Dark Atelier Forest",
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.iconTheme": "Monokai Pro Icons",
     "languageStylus.useSeparator": false,
@@ -27,7 +27,6 @@
         "markdown"
     ],
     "cSpell.language": "nl,nl-NL,en",
-    "editor.cursorBlinking": "smooth",
     "editor.find.addExtraSpaceOnTop": false,
     "editor.fontLigatures": true,
     "files.watcherExclude": {
@@ -49,4 +48,3 @@
     "explorer.openEditors.visible": 0,
     "terminal.integrated.experimentalRefreshOnResume": true
 }
-
