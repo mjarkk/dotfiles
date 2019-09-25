@@ -8,10 +8,10 @@
     "explorer.confirmDelete": false,
     "files.insertFinalNewline": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "workbench.startupEditor": "none",
     "git.autofetch": true,
-    "workbench.colorTheme": "Base16 Dark Atelier Forest",
+    "workbench.colorTheme": "GNOME dark",
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.iconTheme": "Monokai Pro Icons",
     "languageStylus.useSeparator": false,
@@ -42,9 +42,10 @@
     "zenMode.hideLineNumbers": false,
     "zenMode.hideActivityBar": false,
     "zenMode.hideTabs": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "hidden",
     "window.restoreFullscreen": true,
-    "window.title": "${dirty}${activeEditorShort} <> ${rootName}",
+    "window.title": "${rootName}",
     "explorer.openEditors.visible": 0,
-    "terminal.integrated.experimentalRefreshOnResume": true
+    "diffEditor.renderSideBySide": true,
+    "workbench.panel.defaultLocation": "right"
 }
