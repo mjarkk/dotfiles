@@ -1,5 +1,6 @@
 # Set the go path
 set -Ux GOPATH $HOME/go
+set -Ux GO111MODULE auto
 
 # Add the go install dir to the path
 set -x PATH $GOPATH/bin $PATH
@@ -18,37 +19,46 @@ set -Ux GPG_AGENT_INFO ""
 # thefuck --alias | source
 
 # Alias vim to nvim
-alias vi='nvim $argv'
-alias vim='nvim $argv'
+alias vi='nvim'
+alias vim='nvim'
 
 # add scale factor 2 to spotify, otherwhise the UI is really small on 4k screens with 2x scaling
 alias spotify='spotify --force-device-scale-factor=2 $argv'
 
 # Add the line underhere to bind to code to code-oss
-# alias code='code-oss $argv'
+alias code='code-oss'
+
+# If discord needs to die
+alias killDiscord='kill discord && kill discord'
 
 # Some general shotcuts for programs
-alias lg='lazygit $argv'
-alias ldd='lazydocker $argv'
-alias ss='sudo systemctl $argv'
+alias lg='lazygit'
+alias ldd='lazydocker'
+alias ss='sudo systemctl'
 alias c='code ./'
 alias g='go'
 alias l='ls'
 alias p='pwd'
 
+# A nice shortcut to untar something
+alias untar='tar xvzf'
+
 # Git shortcuts
-alias commit='git commit $argv'
-alias push='git push $argv'
-alias add='git add $argv'
-alias pull='git pull $argv'
+alias commit='git commit'
+alias push='git push'
+alias add='git add'
+alias pull='git pull'
+alias git-stat='git diff --stat'
+alias gitstat='git-stat'
 
 # Bind cat to bat -p, this makes using cat so much better
-alias cat='bat -p $argv'
+alias cat='bat -p'
 
 # Cross distro bindings to make system updates a bit faster to do
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu'
 alias dnfup='sudo dnf update'
+alias xbpsup='sudo xbps-install -Syu'
 function aptup
   sudo apt update -y
   sudo apt upgrade -y

@@ -5,8 +5,9 @@ This repo contains all my config files
 Look in [./vscode](./vscode)
 
 ## Fish config
-file `config.fish`  
-location: `~/.config/fish/`  
+file `init.fish`  
+location: `~/.config/omf/init.fish`  
+*You need omf (oh my fish) for this*
 
 ## Launch command rofi
 I use rofi to open applications

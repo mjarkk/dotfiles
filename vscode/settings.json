@@ -11,9 +11,9 @@
     "window.zoomLevel": -1,
     "workbench.startupEditor": "none",
     "git.autofetch": true,
-    "workbench.colorTheme": "GNOME dark",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "editor.multiCursorModifier": "ctrlCmd",
-    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
     "languageStylus.useSeparator": false,
     "search.exclude": {
         "**/vendor": true,
@@ -23,17 +23,12 @@
     "workbench.sideBar.location": "right",
     "workbench.list.keyboardNavigation": "simple",
     "editor.fontWeight": "500",
-    "cSpell.enabledLanguageIds": [
-        "markdown"
-    ],
-    "cSpell.language": "nl,nl-NL,en",
     "editor.find.addExtraSpaceOnTop": false,
     "editor.fontLigatures": true,
     "files.watcherExclude": {
         "**/vendor/**": true
     },
     "workbench.enableExperiments": false,
-    "workbench.useExperimentalGridLayout": true,
     "workbench.tips.enabled": false,
     "workbench.tree.indent": 16,
     "workbench.settings.enableNaturalLanguageSearch": false,
@@ -47,5 +42,23 @@
     "window.title": "${rootName}",
     "explorer.openEditors.visible": 0,
     "diffEditor.renderSideBySide": true,
-    "workbench.panel.defaultLocation": "right"
+    "workbench.panel.defaultLocation": "right",
+    "go.autocompleteUnimportedPackages": true,
+    "go.useLanguageServer": true,
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        "rename": true,
+        "goToDefinition": true,
+        "hover": true,
+        "signatureHelp": true,
+        "goToTypeDefinition": true,
+        "goToImplementation": true,
+        "documentSymbols": true,
+        "workspaceSymbols": true,
+        "findReferences": true,
+        "diagnostics": true,
+        "documentLink": true
+    },
+    "go.lintTool": "golangci-lint",
 }

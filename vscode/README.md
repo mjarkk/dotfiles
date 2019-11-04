@@ -55,4 +55,10 @@ code \
 1. <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> 
 2. Type `settings`
 3. Click on: `Preferences: Open settings (JSON)`
-4. past the contents of `settings.json` in there
+4. past the contents of `settings.json`
+
+## 4 - Set keybindings
+1. <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> 
+2. Type `Keyboard json`
+3. Click on: `Open Keyboard Shortcuts (JSON)`
+4. past the contents of `keybindings.json`
