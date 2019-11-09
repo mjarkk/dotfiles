@@ -39,6 +39,7 @@ alias c='code ./'
 alias g='go'
 alias l='ls'
 alias p='pwd'
+alias startDocker='ss start docker'
 
 # A nice shortcut to untar something
 alias untar='tar xvzf'
