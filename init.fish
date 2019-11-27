@@ -51,6 +51,7 @@ alias add='git add'
 alias pull='git pull'
 alias git-stat='git diff --stat'
 alias gitstat='git-stat'
+alias gitStat='git-stat'
 
 # Bind cat to bat -p, this makes using cat so much better
 alias cat='bat -p'
@@ -58,6 +59,7 @@ alias cat='bat -p'
 # Cross distro bindings to make system updates a bit faster to do
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu'
+alias yayup='yay -Syuu'
 alias dnfup='sudo dnf update'
 alias xbpsup='sudo xbps-install -Syu'
 function aptup
@@ -66,11 +68,13 @@ function aptup
   sudo apt autoremove -y
 end
 
-# When angular is taking up to much memory
-# One of those dumb angular things
+# Give node a shitload of memory just so angular can do it's special things
 set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 
 # For running minio in a development envourment
 # I don't want to always run programs like this in the background, 
 # that's why i added the -it and --rm, this i always know it's running somewhere in a terminal  
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
+
+
+
