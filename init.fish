@@ -11,24 +11,20 @@ set -x PATH $HOME/.cargo/bin $PATH
 # For some reasone i sometimes don't have this by default in my path so i'll add it
 set -x PATH /home/mark/.local/bin $PATH
 
-# Set this shell variable to nothing
-# this stops the anoying gpg agent
+# On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
 
-# If thefuck is installed uncomment this
+# If thefuck is installed uncomment this, uncommented because it takes long to start
 # thefuck --alias | source
 
 # Alias vim to nvim
 alias vi='nvim'
 alias vim='nvim'
 
-# add scale factor 2 to spotify, otherwhise the UI is really small on 4k screens with 2x scaling
-alias spotify='spotify --force-device-scale-factor=2 $argv'
+# Add the line underhere to bind to code to code-oss, some distros install the open source edition for some reason
+# alias code='code-oss'
 
-# Add the line underhere to bind to code to code-oss
-alias code='code-oss'
-
-# If discord needs to die
+# If discord won't die
 alias killDiscord='kill discord && kill discord'
 
 # Some general shotcuts for programs
@@ -41,7 +37,7 @@ alias l='ls'
 alias p='pwd'
 alias startDocker='ss start docker'
 
-# A nice shortcut to untar something
+# Shortcut to untar something
 alias untar='tar xvzf'
 
 # Git shortcuts
@@ -49,9 +45,11 @@ alias commit='git commit'
 alias push='git push'
 alias add='git add'
 alias pull='git pull'
-alias git-stat='git diff --stat'
+alias git-stat='git diff --stat' # Show some nice git stats
 alias gitstat='git-stat'
 alias gitStat='git-stat'
+alias checkdev='git checkout development' # Checkout development
+alias checkmas='git checkout master' # Checkout master
 
 # Bind cat to bat -p, this makes using cat so much better
 alias cat='bat -p'
@@ -75,6 +73,4 @@ set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 # I don't want to always run programs like this in the background, 
 # that's why i added the -it and --rm, this i always know it's running somewhere in a terminal  
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
-
-
 
