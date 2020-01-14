@@ -14,15 +14,19 @@ set -x PATH /home/mark/.local/bin $PATH
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
 
-# If thefuck is installed uncomment this, uncommented because it takes long to start
-# thefuck --alias | source
+# If thefuck is installed set it up automaticly
+if command --search thefuck >/dev/null do 
+  thefuck --alias | source
+end
 
 # Alias vim to nvim
 alias vi='nvim'
 alias vim='nvim'
 
-# Add the line underhere to bind to code to code-oss, some distros install the open source edition for some reason
-# alias code='code-oss'
+# some distros install the open source edition of vs-code, bind that to code if that's the case
+if command --search code-oss >/dev/null do 
+  alias code='code-oss'
+end
 
 # If discord won't die
 alias killDiscord='kill discord && kill discord'
@@ -52,7 +56,22 @@ alias checkdev='git checkout development' # Checkout development
 alias checkmas='git checkout master' # Checkout master
 
 # Bind cat to bat -p, this makes using cat so much better
-alias cat='bat -p'
+function cat
+  if command --search bat >/dev/null do 
+    bat -p $argv
+  else
+    cat $argv
+  end
+end
+
+# Bind ls to exa, exa has some nice things that make using ls just a bit better
+function ls
+  if command --search exa >/dev/null do
+    exa $argv
+  else
+    ls $argv
+  end
+end
 
 # Cross distro bindings to make system updates a bit faster to do
 alias eoup='sudo eopkg upgrade'
@@ -70,7 +89,7 @@ end
 set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 
 # For running minio in a development envourment
-# I don't want to always run programs like this in the background, 
-# that's why i added the -it and --rm, this i always know it's running somewhere in a terminal  
+# I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
+# That's why i use it this way, now i can start it in a terminal tab and never forget that some bs is running in the background. 
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
 
