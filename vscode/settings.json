@@ -17,7 +17,7 @@
         "**/node_modules": true,
     },
     "editor.formatOnSave": true,
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "workbench.sideBar.location": "right",
     "workbench.list.keyboardNavigation": "simple",
     "editor.fontWeight": "500",
@@ -55,8 +55,5 @@
     "terminal.integrated.rightClickBehavior": "default", // On windows do not act like every windows terminal
     "editor.cursorSurroundingLines": 4,
     "diffEditor.renderIndicators": false,
-    "editor.minimap.maxColumn": 80,
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.showSlider": "always",
     "files.trimTrailingWhitespace": true,
 }
