@@ -7,9 +7,6 @@
     "editor.fontFamily": "Fira Code", // "iosevka" is an alternative nice front
     "explorer.confirmDelete": false,
     "files.insertFinalNewline": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 0,
-    "workbench.startupEditor": "none",
     "git.autofetch": true,
     "workbench.colorTheme": "Monokai Pro",
     "editor.multiCursorModifier": "ctrlCmd",
@@ -20,7 +17,6 @@
         "**/node_modules": true,
     },
     "editor.formatOnSave": true,
-    "editor.formatOnType": true,
     "editor.minimap.enabled": true,
     "workbench.sideBar.location": "right",
     "workbench.list.keyboardNavigation": "simple",
