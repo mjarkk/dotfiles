@@ -1,12 +1,11 @@
-# Set the go path
+# Go shell vars
 set -Ux GOPATH $HOME/go
-set -Ux GO111MODULE auto
-
-# Add the go install dir to the path
 set -x PATH $GOPATH/bin $PATH
 
-# Add the rust install dir to the path
+# Rust and Cargo shell vars
 set -x PATH $HOME/.cargo/bin $PATH
+set -x CARGO_NAME "mjarkk"
+set -x CARGO_EMAIL "mkopenga@gmail.com"
 
 # For some reasone i sometimes don't have this by default in my path so i'll add it
 set -x PATH /home/mark/.local/bin $PATH
@@ -15,7 +14,7 @@ set -x PATH /home/mark/.local/bin $PATH
 set -Ux GPG_AGENT_INFO ""
 
 # If thefuck is installed set it up automaticly
-if command --search thefuck >/dev/null do 
+if type -q thefuck
   thefuck --alias | source
 end
 
@@ -24,7 +23,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 # some distros install the open source edition of vs-code, bind that to code if that's the case
-if command --search code-oss >/dev/null do 
+if type -q code-oss
   alias code='code-oss'
 end
 
@@ -55,22 +54,14 @@ alias gitStat='git-stat'
 alias checkdev='git checkout development' # Checkout development
 alias checkmas='git checkout master' # Checkout master
 
-# Bind cat to bat -p, this makes using cat so much better
-function cat
-  if command --search bat >/dev/null do 
-    bat -p $argv
-  else
-    cat $argv
-  end
+# Bind cat to bat -p, this makes using cat sooo much better
+if type -q bat
+  alias cat='bat -p'
 end
 
 # Bind ls to exa, exa has some nice things that make using ls just a bit better
-function ls
-  if command --search exa >/dev/null do
-    exa $argv
-  else
-    ls $argv
-  end
+if type -q exa
+  alias ls='exa'
 end
 
 # Cross distro bindings to make system updates a bit faster to do
@@ -90,6 +81,6 @@ set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
-# That's why i use it this way, now i can start it in a terminal tab and never forget that some bs is running in the background. 
+# That's why i use it this way, now i can start it in a terminal tab and never forget that some bs is running in the background.
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
 
