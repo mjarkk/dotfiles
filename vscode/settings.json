@@ -8,9 +8,9 @@
     "explorer.confirmDelete": false,
     "files.insertFinalNewline": true,
     "git.autofetch": true,
-    "workbench.colorTheme": "Monokai Pro",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
     "editor.multiCursorModifier": "ctrlCmd",
-    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
     "languageStylus.useSeparator": false,
     "search.exclude": {
         "**/vendor": true,
@@ -49,7 +49,7 @@
     "editor.mouseWheelScrollSensitivity": 2,
     "editor.scrollBeyondLastColumn": 10,
     "workbench.tips.enabled": false,
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "explorer.decorations.badges": false,
     "search.quickOpen.history.filterSortOrder": "recency",
     "terminal.integrated.rightClickBehavior": "default", // On windows do not act like every windows terminal
