@@ -1,16 +1,5 @@
 # dotfiles
 This repo contains all my config files
 
-## Vscode
-Look in [./vscode](./vscode)
-
-## Fish config
-file `init.fish`  
-location: `~/.config/omf/init.fish`  
-*You need omf (oh my fish) for this*
-
-## Launch command rofi
-I use rofi to open applications
-```
-rofi -show run -dpi 300 -lines 6 -width 30
-```
+Peek around to see what you like to use,
+I won't tell how i setup this all because it might break things and i exacly know when to use it.
