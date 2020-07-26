@@ -1,3 +1,6 @@
+function fish_greeting
+end
+
 # Go shell vars
 set -Ux GOPATH $HOME/go
 set -x PATH $GOPATH/bin $PATH
