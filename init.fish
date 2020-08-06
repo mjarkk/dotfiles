@@ -77,6 +77,9 @@ function aptup
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt autoremove -y
+  if type -q flatpak
+    flatpak update -y
+  end
 end
 
 # Give node a shitload of memory just so angular can do it's special things
