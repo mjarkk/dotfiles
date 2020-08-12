@@ -95,6 +95,20 @@ function aptup
   end
 end
 
+function up
+  set distro (cat /etc/*-release | grep "DISTRIB_DESCRIPTION=" | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
+  switch $distro
+    case 'Arch Linux'
+      if type -q yay
+        yayup
+      else
+        pacup
+      end
+    case '*'
+      echo 'Unknown distro: $distro'
+  end
+end
+
 # Post setup config edit and run
 alias editPostSetup='$EDITOR ~/.postSetup.sh'
 alias postSetup='sh ~/.postSetup.sh'
