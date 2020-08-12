@@ -7,8 +7,8 @@ set -x PATH $GOPATH/bin $PATH
 
 # Rust and Cargo shell vars
 set -x PATH $HOME/.cargo/bin $PATH
-set -x CARGO_NAME "mjarkk"
-set -x CARGO_EMAIL "mkopenga@gmail.com"
+set -Ux CARGO_NAME "mjarkk"
+set -Ux CARGO_EMAIL "mkopenga@gmail.com"
 
 # For some reasone i sometimes don't have this by default in my path so i'll add it
 set -x PATH /home/mark/.local/bin $PATH
@@ -16,14 +16,27 @@ set -x PATH /home/mark/.local/bin $PATH
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
 
+# Git config, so i don't have to setup this every time
+set -Ux GIT_AUTHOR_NAME "mjarkk"
+set -Ux GIT_AUTHOR_EMAIL "mkopenga@gmail.com"
+
+# Give node a shitload of memory just so angular can do it's special things
+set -Ux NODE_OPTIONS "--max-old-space-size=4096"
+
 # If thefuck is installed set it up automaticly
 if type -q thefuck
   thefuck --alias | source
 end
 
-# Alias vim to nvim
-alias vi='nvim'
-alias vim='nvim'
+# Use nvim everywhere
+if type -q nvim
+  set -Ux EDITOR "nvim"
+  set -Ux GIT_EDITOR "nvim"
+  alias vi="nvim"
+  alias vim="nvim"
+else
+  set -Ux EDITOR "nano"
+end
 
 # some distros install the open source edition of vs-code, bind that to code if that's the case
 if type -q code-oss
@@ -35,13 +48,13 @@ alias killDiscord='kill discord && kill discord'
 
 # Some general shotcuts for programs
 alias lg='lazygit'
-alias ldd='lazydocker'
 alias ss='sudo systemctl'
 alias c='code ./'
 alias g='go'
 alias l='ls'
 alias p='pwd'
 alias startDocker='ss start docker'
+alias open='xdg-open'
 
 # Shortcut to untar something
 alias untar='tar xvzf'
@@ -67,7 +80,7 @@ if type -q exa
   alias ls='exa'
 end
 
-# Cross distro bindings to make system updates a bit faster to do
+# Cross distro bindings to make system updates a bit faster
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu'
 alias yayup='yay -Syuu'
@@ -82,8 +95,9 @@ function aptup
   end
 end
 
-# Give node a shitload of memory just so angular can do it's special things
-set -Ux NODE_OPTIONS "--max-old-space-size=4096"
+# Post setup config edit and run
+alias editPostSetup='$EDITOR ~/.postSetup.sh'
+alias postSetup='sh ~/.postSetup.sh'
 
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
