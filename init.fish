@@ -96,7 +96,7 @@ function aptup
 end
 
 function up
-  set distro (cat /etc/*-release | grep "DISTRIB_DESCRIPTION=" | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
+  set distro (grep "DISTRIB_DESCRIPTION=" /etc/lsb-release | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
   switch $distro
     case 'Arch Linux'
       if type -q yay
