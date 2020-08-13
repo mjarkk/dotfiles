@@ -96,16 +96,19 @@ function aptup
 end
 
 function up
-  set distro (grep "DISTRIB_DESCRIPTION=" /etc/lsb-release | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
-  switch $distro
-    case 'Arch Linux'
-      if type -q yay
-        yayup
-      else
-        pacup
-      end
-    case '*'
-      echo 'Unknown distro: $distro'
+  set DISTRIB_DESCRIPTION (grep "DISTRIB_DESCRIPTION=" /etc/lsb-release | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
+  set ID_LIKE (grep "ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
+  set ID (grep "ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
+  if [ $DISTRIB_DESCRIPTION = 'Arch Linux' ]
+    if type -q yay
+      yayup
+    else
+      pacup
+    end
+  else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
+    aptup
+  else
+    echo 'Unknown distro: $ID'
   end
 end
 
