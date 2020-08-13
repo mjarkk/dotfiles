@@ -96,10 +96,10 @@ function aptup
 end
 
 function up
-  set DISTRIB_DESCRIPTION (grep "DISTRIB_DESCRIPTION=" /etc/lsb-release | sed 's/DISTRIB_DESCRIPTION=//' | sed 's/"//g')
-  set ID_LIKE (grep "ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
-  set ID (grep "ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
-  if [ $DISTRIB_DESCRIPTION = 'Arch Linux' ]
+  set ID_LIKE (grep "^ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
+  set ID (grep "^ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
+
+  if [ $ID = 'arch' ] || [ $ID_LIKE = 'arch' ]
     if type -q yay
       yayup
     else
