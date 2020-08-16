@@ -82,8 +82,8 @@ end
 
 # Cross distro bindings to make system updates a bit faster
 alias eoup='sudo eopkg upgrade'
-alias pacup='sudo pacman -Syuu'
-alias yayup='yay -Syuu'
+alias pacup='sudo pacman -Syuu --noconfirm'
+alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
 alias dnfup='sudo dnf update'
 alias xbpsup='sudo xbps-install -Syu'
 function aptup
