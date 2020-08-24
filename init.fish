@@ -105,7 +105,7 @@ function up
     else
       pacup
     end
-  else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
+  else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID_LIKE = 'ubuntu' ] ||  [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
     aptup
   else
     echo 'Unknown distro: $ID'
