@@ -81,18 +81,21 @@ if type -q exa
 end
 
 # Cross distro bindings to make system updates a bit faster
-alias eoup='sudo eopkg upgrade'
-alias pacup='sudo pacman -Syuu --noconfirm'
-alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
-alias dnfup='sudo dnf update'
-alias xbpsup='sudo xbps-install -Syu'
+function flatup
+  if type -q flatpak
+    flatpak update -y
+  end
+end
+alias eoup='sudo eopkg upgrade && flatup'
+alias pacup='sudo pacman -Syuu --noconfirm && flatup'
+alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm && flatup'
+alias dnfup='sudo dnf update && flatup'
+alias xbpsup='sudo xbps-install -Syu && flatup'
 function aptup
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt autoremove -y
-  if type -q flatpak
-    flatpak update -y
-  end
+  flatup
 end
 
 function up
