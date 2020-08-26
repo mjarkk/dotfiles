@@ -110,6 +110,12 @@ function up
     end
   else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID_LIKE = 'ubuntu' ] ||  [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
     aptup
+  else if [ $ID = 'solus' ] || [ $ID_LIKE = 'solus' ]
+    eoup
+  else if [ $ID = 'void' ] || [ $ID_LIKE = 'void' ]
+    xbpsup
+  else if [ $ID = 'fedora' ] || [ $ID_LIKE = 'fedora' ]
+    dnfup
   else
     echo 'Unknown distro: $ID'
   end
