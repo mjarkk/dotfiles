@@ -23,6 +23,9 @@ set -Ux GIT_AUTHOR_EMAIL "mkopenga@gmail.com"
 # Give node a shitload of memory just so angular can do it's special things
 set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 
+# Other dumb angular things
+set -Ux NG_CLI_ANALYTICS "false"
+
 # If thefuck is installed set it up automaticly
 if type -q thefuck
   thefuck --alias | source
