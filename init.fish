@@ -86,11 +86,11 @@ end
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
-alias eoup='sudo eopkg upgrade && flatup'
-alias pacup='sudo pacman -Syuu --noconfirm && flatup'
-alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm && flatup'
-alias dnfup='sudo dnf update && flatup'
-alias xbpsup='sudo xbps-install -Syu && flatup'
+alias eoup='sudo eopkg upgrade'
+alias pacup='sudo pacman -Syuu --noconfirm'
+alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
+alias dnfup='sudo dnf update'
+alias xbpsup='sudo xbps-install -Syu'
 function aptup
   sudo apt update -y
   sudo apt upgrade -y
@@ -118,7 +118,7 @@ function up
   else
     echo 'Unknown distro: $ID'
   end
-  
+
   # Also check for flatpak and rust updates if installed
   if type -q flatpak
     flatup
