@@ -83,6 +83,11 @@ if type -q exa
   alias ls='exa'
 end
 
+# Set a docker alias to podman as most docker commands work with podman
+if type -q podman
+  alias podman='docker'
+end
+
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
