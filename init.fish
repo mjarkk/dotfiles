@@ -20,11 +20,12 @@ set -Ux GPG_AGENT_INFO ""
 set -Ux GIT_AUTHOR_NAME "mjarkk"
 set -Ux GIT_AUTHOR_EMAIL "mkopenga@gmail.com"
 
-# Give node a shitload of memory just so angular can do it's special things
+# Give node a shitload of memory just so angular can do it's "special" things
 set -Ux NODE_OPTIONS "--max-old-space-size=4096"
 
-# Other dumb angular things
-set -Ux NG_CLI_ANALYTICS "false"
+# Disable analytics for some programs
+set -Ux NG_CLI_ANALYTICS "false" # Angular
+set -Ux NEXT_TELEMETRY_DISABLED "1" # Next.js
 
 # If thefuck is installed set it up automaticly
 if type -q thefuck
@@ -94,7 +95,7 @@ alias rusup='rustup update'
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu --noconfirm'
 alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
-alias dnfup='sudo dnf update'
+alias dnfup='sudo dnf update -y'
 alias xbpsup='sudo xbps-install -Syu'
 function aptup
   sudo apt update -y
