@@ -68,6 +68,7 @@ alias commit='git commit'
 alias push='git push'
 alias add='git add'
 alias pull='git pull'
+alias branch="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias git-stat='git diff --stat' # Show some nice git stats
 alias gitstat='git-stat'
 alias gitStat='git-stat'
