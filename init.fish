@@ -75,6 +75,9 @@ alias gitStat='git-stat'
 alias checkdev='git checkout development' # Checkout development
 alias checkmas='git checkout master' # Checkout master
 
+# easially find all systems ips
+alias ips='ip addr | grep "\([0-9]\{1,3\}\.\)\{3\}\([0-9]\{1,3\}\)" | sed -e 's/^[ \t]*//' | grep -v "127\.0\.0\.1"'
+
 # Bind cat to bat -p, this makes using cat sooo much better
 if type -q bat
   alias cat='bat -p'
