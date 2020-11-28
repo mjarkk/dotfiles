@@ -94,7 +94,7 @@ if type -q podman
 end
 
 # Alias to start code-server
-alias startCodeServer='sudo systemctl start --now code-server@mkopenga'
+alias startCodeServer='sudo systemctl start --now code-server@$USER'
 
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
