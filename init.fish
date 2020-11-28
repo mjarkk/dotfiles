@@ -93,6 +93,9 @@ if type -q podman
   alias docker='podman'
 end
 
+# Alias to start code-server
+alias startCodeServer='sudo systemctl start --now code-server@mkopenga'
+
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
