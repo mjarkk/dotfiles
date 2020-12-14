@@ -58,7 +58,14 @@ alias g='go'
 alias l='ls'
 alias p='pwd'
 alias startDocker='ss start docker'
-alias open='xdg-open'
+
+function open
+  if uname | grep 'Darwin' > /dev/null
+    /usr/bin/open $argv
+  else
+    xdg-open $argv
+  end
+end
 
 # Shortcut to untar something
 alias untar='tar xvzf'
@@ -99,6 +106,7 @@ alias startCodeServer='sudo systemctl start --now code-server@$USER'
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
+alias brewup='brew update'
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu --noconfirm'
 alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
@@ -144,6 +152,9 @@ end
 # Post setup config edit and run
 alias editPostSetup='$EDITOR ~/.postSetup.sh'
 alias postSetup='sh ~/.postSetup.sh'
+
+alias startMongo='mongod --config /usr/local/etc/mongod.conf'
+alias startRedis='redis-server /usr/local/etc/redis.conf'
 
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
