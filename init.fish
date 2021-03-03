@@ -10,7 +10,11 @@ set -x PATH $HOME/.cargo/bin $PATH
 set -Ux CARGO_NAME "mjarkk"
 set -Ux CARGO_EMAIL "mkopenga@gmail.com"
 
+# PHP Composer global installed packages
+set -x PATH $HOME/.composer/vendor/bin $PATH
+
 # For some reasone i sometimes don't have this by default in my path so i'll add it
+# I think this was mainly for running snap packages easially in the terminal
 set -x PATH /home/mark/.local/bin $PATH
 
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
@@ -30,6 +34,11 @@ set -Ux NEXT_TELEMETRY_DISABLED "1" # Next.js
 # If thefuck is installed set it up automaticly
 if type -q thefuck
   thefuck --alias | source
+end
+
+# Alias php artisan for ease of use
+if type -q php
+  alias artisan='php artisan'
 end
 
 # Use nvim everywhere
@@ -106,7 +115,10 @@ alias startCodeServer='sudo systemctl start --now code-server@$USER'
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
-alias brewup='brew update'
+function brewup
+  brew update
+  brew upgrade
+end
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu --noconfirm'
 alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
