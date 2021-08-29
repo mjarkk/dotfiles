@@ -1,21 +1,29 @@
 function fish_greeting
 end
 
+# Semi-common path folders
+set -x PATH /opt/local/bin $PATH
+set -x PATH /home/mark/.local/bin $PATH
+
+# Php shell vars
+if type -q php
+  set -x PATH $HOME/.composer/vendor/bin $PATH
+  alias composer='php $HOME/.composer/composer'
+end
+
 # Go shell vars
-set -Ux GOPATH $HOME/go
-set -x PATH $GOPATH/bin $PATH
+if type -q go
+  set -Ux GOPATH $HOME/go
+  set -x PATH $GOPATH/bin $PATH
+  set -Ux GOPRIVATE bitbucket.org/teamscript
+end
 
 # Rust and Cargo shell vars
 set -x PATH $HOME/.cargo/bin $PATH
-set -Ux CARGO_NAME "mjarkk"
-set -Ux CARGO_EMAIL "mkopenga@gmail.com"
-
-# PHP Composer global installed packages
-set -x PATH $HOME/.composer/vendor/bin $PATH
-
-# For some reasone i sometimes don't have this by default in my path so i'll add it
-# I think this was mainly for running snap packages easially in the terminal
-set -x PATH /home/mark/.local/bin $PATH
+if type -q cargo
+  set -Ux CARGO_NAME "mjarkk"
+  set -Ux CARGO_EMAIL "mkopenga@gmail.com"
+end
 
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
@@ -36,11 +44,6 @@ if type -q thefuck
   thefuck --alias | source
 end
 
-# Alias php artisan for ease of use
-if type -q php
-  alias artisan='php artisan'
-end
-
 # Use nvim everywhere
 if type -q nvim
   set -Ux EDITOR "nvim"
@@ -49,6 +52,11 @@ if type -q nvim
   alias vim="nvim"
 else
   set -Ux EDITOR "nano"
+end
+
+# Alias php artisan for easy use
+if type -q php
+  alias artisan='php artisan'
 end
 
 # some distros install the open source edition of vs-code, bind that to code if that's the case
@@ -66,7 +74,7 @@ alias c='code ./'
 alias g='go'
 alias l='ls'
 alias p='pwd'
-alias startDocker='ss start docker'
+alias lsd='ls -D'
 
 function open
   if uname | grep 'Darwin' > /dev/null
@@ -109,16 +117,25 @@ if type -q podman
   alias docker='podman'
 end
 
-# Alias to start code-server
-alias startCodeServer='sudo systemctl start --now code-server@$USER'
+# Aliases for systemctl
+alias startDocker='ss start docker'
+alias startCodeServer='ss start --now code-server@$USER'
+
+  # Macos spesific shell vars
+if uname | grep 'Darwin' > /dev/null
+  set -x PATH /usr/local/opt/php@7.4/bin $PATH
+  set -x PATH /usr/local/opt/rabbitmq/sbin $PATH
+
+  alias startMongo='brew services start mongodb-community@5.0'
+  alias stopMongo='brew services stop mongodb-community'
+  alias startRedis='redis-server /usr/local/etc/redis.conf'
+  alias startPostgres='brew services run postgresql'
+  alias stopPostgres='brew services restart postgresql'
+end
 
 # Cross distro bindings to make system updates a bit faster
 alias flatup='flatpak update -y'
 alias rusup='rustup update'
-function brewup
-  brew update
-  brew upgrade
-end
 alias eoup='sudo eopkg upgrade'
 alias pacup='sudo pacman -Syuu --noconfirm'
 alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
@@ -129,27 +146,37 @@ function aptup
   sudo apt upgrade -y
   sudo apt autoremove -y
 end
+function brewup
+  brew update
+  brew upgrade
+end
 
 function up
-  set ID_LIKE (grep "^ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
-  set ID (grep "^ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
-
-  if [ $ID = 'arch' ] || [ $ID_LIKE = 'arch' ]
-    if type -q yay
-      yayup
-    else
-      pacup
-    end
-  else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID_LIKE = 'ubuntu' ] ||  [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
-    aptup
-  else if [ $ID = 'solus' ] || [ $ID_LIKE = 'solus' ]
-    eoup
-  else if [ $ID = 'void' ] || [ $ID_LIKE = 'void' ]
-    xbpsup
-  else if [ $ID = 'fedora' ] || [ $ID_LIKE = 'fedora' ]
-    dnfup
+  if uname | grep 'Darwin' > /dev/null
+    # Macos
+    brewup
   else
-    echo 'Unknown distro: $ID'
+    # This is a linux distro
+    set ID_LIKE (grep "^ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
+    set ID (grep "^ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
+
+    if [ $ID = 'arch' ] || [ $ID_LIKE = 'arch' ]
+      if type -q yay
+        yayup
+      else
+        pacup
+      end
+    else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = 'debian' ] || [ $ID_LIKE = 'ubuntu' ] ||  [ $ID = 'ubuntu' ] || [ $ID = 'debian' ]
+      aptup
+    else if [ $ID = 'solus' ] || [ $ID_LIKE = 'solus' ]
+      eoup
+    else if [ $ID = 'void' ] || [ $ID_LIKE = 'void' ]
+      xbpsup
+    else if [ $ID = 'fedora' ] || [ $ID_LIKE = 'fedora' ]
+      dnfup
+    else
+      echo 'Unknown distro: $ID'
+    end
   end
 
   # Also check for flatpak and rust updates if installed
@@ -165,11 +192,18 @@ end
 alias editPostSetup='$EDITOR ~/.postSetup.sh'
 alias postSetup='sh ~/.postSetup.sh'
 
-alias startMongo='mongod --config /usr/local/etc/mongod.conf'
-alias startRedis='redis-server /usr/local/etc/redis.conf'
-
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
 # That's why i use it this way, now i can start it in a terminal tab and never forget that some bs is running in the background.
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
 
+# Run minio locally
+function startMinioLocal
+  export MINIO_ACCESS_KEY="BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm"
+  export MINIO_SECRET_KEY="BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R"
+
+  export MINIO_ROOT_USER="BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm"
+  export MINIO_ROOT_PASSWORD="BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R"
+
+  minio server ~/.minio_data
+end
