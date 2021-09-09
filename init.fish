@@ -188,6 +188,17 @@ function up
   end
 end
 
+function darkTheme
+  set -Ux BAT_THEME Monokai Extended
+end
+
+function lightTheme
+  set -Ux BAT_THEME Monokai Extended Light
+end
+
+# By default use the dark theme
+darkTheme
+
 # Post setup config edit and run
 alias editPostSetup='$EDITOR ~/.postSetup.sh'
 alias postSetup='sh ~/.postSetup.sh'
