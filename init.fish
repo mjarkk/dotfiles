@@ -186,6 +186,9 @@ function up
   if type -q rustup
     rusup
   end
+  if type -q flutter
+    flutter upgrade
+  end
 end
 
 function darkTheme
