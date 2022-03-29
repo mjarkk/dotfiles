@@ -9,6 +9,7 @@ set -x PATH /home/mark/.local/bin $PATH
 if type -q php
   set -x PATH $HOME/.composer/vendor/bin $PATH
   alias composer='php $HOME/.composer/composer'
+  alias artisan='php artisan'
 end
 
 # Go shell vars
@@ -52,11 +53,6 @@ if type -q nvim
   alias vim="nvim"
 else
   set -Ux EDITOR "nano"
-end
-
-# Alias php artisan for easy use
-if type -q php
-  alias artisan='php artisan'
 end
 
 # some distros install the open source edition of vs-code, bind that to code if that's the case
