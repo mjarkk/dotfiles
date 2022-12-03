@@ -26,6 +26,10 @@ if type -q cargo
   set -Ux CARGO_EMAIL "mkopenga@gmail.com"
 end
 
+if type -q zoxide
+  zoxide init fish | source
+end
+
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
 
@@ -117,7 +121,7 @@ end
 alias startDocker='ss start docker'
 alias startCodeServer='ss start --now code-server@$USER'
 
-  # Macos spesific shell vars
+# Macos spesific shell vars
 if uname | grep 'Darwin' > /dev/null
   set -x PATH /usr/local/opt/php@7.4/bin $PATH
   set -x PATH /usr/local/opt/rabbitmq/sbin $PATH
