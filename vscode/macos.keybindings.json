@@ -26,5 +26,15 @@
         "key": "cmd+right",
         "command": "-cursorHome",
         "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "inlineChat.start",
+        "when": "inlineChatHasProvider && !editorReadonly"
+    },
+    {
+        "key": "cmd+i",
+        "command": "-inlineChat.start",
+        "when": "inlineChatHasProvider && !editorReadonly"
     }
 ]
