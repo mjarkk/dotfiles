@@ -41,11 +41,7 @@ set -Ux GPG_AGENT_INFO ""
 set -Ux GIT_AUTHOR_NAME mjarkk
 set -Ux GIT_AUTHOR_EMAIL "mkopenga@gmail.com"
 
-# Give node a shitload of memory just so angular can do it's "special" things
-set -Ux NODE_OPTIONS "--max-old-space-size=4096"
-
 # Disable analytics for some programs
-set -Ux NG_CLI_ANALYTICS false # Angular
 set -Ux NEXT_TELEMETRY_DISABLED 1 # Next.js
 
 # If thefuck is installed set it up automaticly
@@ -68,17 +64,10 @@ if type -q code-oss
     alias code='code-oss'
 end
 
-# If discord won't die
-alias killDiscord='kill discord && kill discord'
-
 # Some general shotcuts for programs
 alias lg='lazygit'
 alias ss='sudo systemctl'
 alias c='code ./'
-alias g='go'
-alias l='ls'
-alias p='pwd'
-alias lsd='ls -D'
 
 function open
     if uname | grep Darwin >/dev/null
@@ -110,6 +99,9 @@ alias ips='ip addr | grep "\([0-9]\{1,3\}\.\)\{3\}\([0-9]\{1,3\}\)" | sed -e "s/
 if type -q bat
     alias cat='bat -p'
 end
+if type -q batcat
+    alias cat='batcat -p'
+end
 
 # Bind ls to exa, exa has some nice things that make using ls just a bit better
 if type -q exa
@@ -123,7 +115,6 @@ end
 
 # Aliases for systemctl
 alias startDocker='ss start docker'
-alias startCodeServer='ss start --now code-server@$USER'
 
 # Macos spesific shell vars
 if uname | grep Darwin >/dev/null
