@@ -1,0 +1,50 @@
+{
+  "base_keymap": "VSCode",
+  "edit_predictions": {
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "GitHub Dark Default"
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "on_yank"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "format_on_save": "language_server",
+  "languages": {
+    "Zig": {
+      "language_servers": [
+        "zls",
+        "..."
+      ]
+    }
+  },
+  "lsp": {
+    "zls": {
+      "binary": {
+        "path": "/home/mjarkk/Packages/zig/zls"
+      },
+      "settings": {
+        "zig_exe_path": "/home/mjarkk/Packages/zig/zig",
+        "zig_lib_path": "/home/mjarkk/Packages/zig/lib"
+      }
+    }
+  }
+}
