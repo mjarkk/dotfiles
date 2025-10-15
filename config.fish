@@ -1,13 +1,22 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
 function fish_greeting
 end
 
 # Semi-common path folders
 set -x PATH /opt/local/bin $PATH
-set -x PATH /home/mark/.local/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
 
 # Common linux things..
-# set -x PATH /home/mark/Documents/flutter/bin $PATH
-# set -Ux CHROME_EXECUTABLE "/home/mark/.local/share/flatpak/exports/bin/com.google.Chrome"
+# set -x PATH $HOME/Documents/flutter/bin $PATH
+# set -Ux CHROME_EXECUTABLE "$HOME/.local/share/flatpak/exports/bin/com.google.Chrome"
+
+if test -d ~/.fly/bin
+   set -Ux FLYCTL_INSTALL $HOME/.fly
+   set -x PATH $FLYCTL_INSTALL/bin $PATH
+end
 
 # Php shell vars
 if type -q php
@@ -28,6 +37,8 @@ set -x PATH $HOME/.cargo/bin $PATH
 if type -q cargo
     set -Ux CARGO_NAME mjarkk
     set -Ux CARGO_EMAIL "mkopenga@gmail.com"
+
+    alias rusup='rustup update'
 end
 
 if type -q zoxide
@@ -43,11 +54,6 @@ set -Ux GIT_AUTHOR_EMAIL "mkopenga@gmail.com"
 
 # Disable analytics for some programs
 set -Ux NEXT_TELEMETRY_DISABLED 1 # Next.js
-
-# If thefuck is installed set it up automaticly
-if type -q thefuck
-    thefuck --alias | source
-end
 
 # Use nvim everywhere
 if type -q nvim
@@ -69,6 +75,7 @@ alias lg='lazygit'
 alias ss='sudo systemctl'
 alias c='code ./'
 
+
 function open
     if uname | grep Darwin >/dev/null
         /usr/bin/open $argv
@@ -81,16 +88,10 @@ end
 alias untar='tar xvzf'
 
 # Git shortcuts
-alias commit='git commit'
-alias push='git push'
-alias add='git add'
-alias pull='git pull'
 alias branch="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias git-stat='git diff --stat' # Show some nice git stats
 alias gitstat='git-stat'
 alias gitStat='git-stat'
-alias checkdev='git checkout development' # Checkout development
-alias checkmas='git checkout master' # Checkout master
 
 # easially find all systems ips
 alias ips='ip addr | grep "\([0-9]\{1,3\}\.\)\{3\}\([0-9]\{1,3\}\)" | sed -e "s/^[ \t]*//" | grep -v "127\.0\.0\.1"'
@@ -113,11 +114,8 @@ if type -q podman
     alias docker='podman'
 end
 
-# Aliases for systemctl
-alias startDocker='ss start docker'
-
-# Macos spesific shell vars
 if uname | grep Darwin >/dev/null
+    # Macos spesific stuff
     set -x PATH /usr/local/opt/php@7.4/bin $PATH
     set -x PATH /usr/local/opt/rabbitmq/sbin $PATH
 
@@ -126,24 +124,27 @@ if uname | grep Darwin >/dev/null
     alias startRedis='redis-server /usr/local/etc/redis.conf'
     alias startPostgres='brew services run postgresql'
     alias stopPostgres='brew services restart postgresql'
-end
+    function brewup
+        brew update
+        brew upgrade
+    end
+else if test -c /etc/os-release
+    # Linux stuff
+    alias memoryspeed='sudo lshw -short -C memory | grep "DIMM"'
+    alias bios='ss reboot --firmware-setup'
+    alias startDocker='ss start docker'
 
-# Cross distro bindings to make system updates a bit faster
-alias flatup='flatpak update -y'
-alias rusup='rustup update'
-alias eoup='sudo eopkg upgrade'
-alias pacup='sudo pacman -Syuu --noconfirm'
-alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
-alias dnfup='sudo dnf update -y'
-alias xbpsup='sudo xbps-install -Syu'
-function aptup
-    sudo apt update -y
-    sudo apt upgrade -y
-    sudo apt autoremove -y
-end
-function brewup
-    brew update
-    brew upgrade
+    alias eoup='sudo eopkg upgrade'
+    alias pacup='sudo pacman -Syuu --noconfirm'
+    alias yayup='yay -Syuu --noeditmenu --answerdiff None --answeredit None --answerclean None --noconfirm'
+    alias dnfup='sudo dnf update -y'
+    alias xbpsup='sudo xbps-install -Syu'
+    alias flatup='flatpak update -y'
+    function aptup
+        sudo apt update -y
+        sudo apt upgrade -y
+        sudo apt autoremove -y
+    end
 end
 
 function up
@@ -197,10 +198,6 @@ end
 # By default use the dark theme
 darkTheme
 
-# Post setup config edit and run
-alias editPostSetup='$EDITOR ~/.postSetup.sh'
-alias postSetup='sh ~/.postSetup.sh'
-
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
 # That's why i use it this way, now i can start it in a terminal tab and never forget that some bs is running in the background.
@@ -215,4 +212,38 @@ function startMinioLocal
     export MINIO_ROOT_PASSWORD="BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R"
 
     minio server ~/.minio_data
+end
+
+# Below is the nai shell config:
+function _git_branch_name
+  echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
+end
+
+function _git_dirty
+  echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
+end
+
+function fish_prompt
+  set -l yellow (set_color yellow)
+  set -l green (set_color green)
+  set -l normal (set_color normal)
+
+  set -l cwd (basename (prompt_pwd))
+
+  echo -e ""
+
+  echo -n -s ' ' $cwd $normal
+
+  if [ (_git_branch_name) ]
+    set -l git_branch (_git_branch_name)
+
+    if [ (_git_dirty) ]
+      set git_info $yellow $git_branch
+    else
+      set git_info $green $git_branch
+    end
+    echo -n -s ' ' $git_info $normal
+  end
+
+  echo -n -s ' ' $normal
 end
