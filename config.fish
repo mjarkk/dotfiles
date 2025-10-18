@@ -132,7 +132,7 @@ if uname | grep Darwin >/dev/null
         brew update
         brew upgrade
     end
-else if test -c /etc/os-release
+else if test -e /etc/os-release
     # Linux stuff
     alias memoryspeed='sudo lshw -short -C memory | grep "DIMM"'
     alias bios='ss reboot --firmware-setup'
