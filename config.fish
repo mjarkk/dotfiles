@@ -34,6 +34,7 @@ if type -q go
     set -Ux GOPATH $HOME/go
     set -x PATH $GOPATH/bin $PATH
     set -Ux GOPRIVATE bitbucket.org/teamscript
+    alias app='go run .'
 end
 
 # Rust and Cargo shell vars
@@ -79,7 +80,6 @@ alias lg='lazygit'
 alias ss='sudo systemctl'
 alias c='code ./'
 
-
 function open
     if uname | grep Darwin >/dev/null
         /usr/bin/open $argv
@@ -106,6 +106,11 @@ if type -q bat
 end
 if type -q batcat
     alias cat='batcat -p'
+end
+
+# Alias zeditor to zed
+if type -q zeditor
+    alias zed='zeditor'
 end
 
 # Bind ls to exa, exa has some nice things that make using ls just a bit better
