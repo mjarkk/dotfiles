@@ -145,7 +145,7 @@ else if test -e /etc/os-release
 
     alias eoup='sudo eopkg upgrade'
     alias pacup='sudo pacman -Syuu --noconfirm'
-    alias yayup='yay -Syuu --answerdiff None --answeredit None --answerclean None --noconfirm'
+    alias yayup='yay -Syuu --answerdiff None --answeredit None --answerclean None'
     alias dnfup='sudo dnf update -y'
     alias xbpsup='sudo xbps-install -Syu'
     alias flatup='flatpak update -y'
