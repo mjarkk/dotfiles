@@ -223,6 +223,10 @@ function startMinioLocal
     minio server ~/.minio_data
 end
 
+function start_meilisearch
+  meilisearch --master-key Rk5Tv0f8wPD07RVksZvDDnceLvEEtSbT56plG78UQ --db-path /Users/mark/.data.ms
+end
+
 # Below is the nai shell config:
 function _git_branch_name
   echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
