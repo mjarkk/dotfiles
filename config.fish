@@ -96,6 +96,11 @@ alias branch="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD
 alias git-stat='git diff --stat' # Show some nice git stats
 alias gitstat='git-stat'
 alias gitStat='git-stat'
+function fuckit
+    git add .
+    git commit --amend --no-edit
+    git push -f
+end
 
 # easially find all systems ips
 alias ips='ip addr | grep "\([0-9]\{1,3\}\.\)\{3\}\([0-9]\{1,3\}\)" | sed -e "s/^[ \t]*//" | grep -v "127\.0\.0\.1"'
