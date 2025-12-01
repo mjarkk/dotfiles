@@ -75,6 +75,10 @@ if type -q code-oss
     alias code='code-oss'
 end
 
+if test -d ~/.antigravity/antigravity
+   set -x PATH $HOME/.antigravity/antigravity/bin $PATH
+end
+
 # Some general shotcuts for programs
 alias lg='lazygit'
 alias ss='sudo systemctl'
