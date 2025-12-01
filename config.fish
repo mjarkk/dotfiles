@@ -22,6 +22,10 @@ if test -d ~/.fly/bin
    set -x PATH $FLYCTL_INSTALL/bin $PATH
 end
 
+if test -d ~/.ghcup/bin
+    set -x PATH $HOME/.ghcup/bin $PATH
+end
+
 # Php shell vars
 if type -q php
     set -x PATH $HOME/.composer/vendor/bin $PATH
