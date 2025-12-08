@@ -17,6 +17,10 @@ if test -d ~/.deno/bin
     set -x PATH $HOME/.deno/bin $PATH
 end
 
+if test -d ~/.bun/bin
+    set -x PATH $HOME/.bun/bin $PATH
+end
+
 if test -d ~/.fly/bin
    set -Ux FLYCTL_INSTALL $HOME/.fly
    set -x PATH $FLYCTL_INSTALL/bin $PATH
