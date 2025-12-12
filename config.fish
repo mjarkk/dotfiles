@@ -130,9 +130,12 @@ if type -q zeditor
     alias zed='zeditor'
 end
 
-# Bind ls to exa, exa has some nice things that make using ls just a bit better
+# Bind ls to exa or eza, they has some nice things that make using ls just a bit better
 if type -q exa
     alias ls='exa'
+end
+if type -q eza
+    alias ls='eza'
 end
 
 # Set a docker alias to podman as most docker commands work with podman
