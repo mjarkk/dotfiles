@@ -143,6 +143,17 @@ if type -q podman
     alias docker='podman'
 end
 
+function darkTheme
+    set -Ux BAT_THEME Monokai Extended
+end
+
+function lightTheme
+    set -Ux BAT_THEME Monokai Extended Light
+end
+
+# By default use the dark theme
+darkTheme
+
 if uname | grep Darwin >/dev/null
     # Macos spesific stuff
     set -x PATH /usr/local/opt/php@7.4/bin $PATH
@@ -156,6 +167,11 @@ if uname | grep Darwin >/dev/null
     function brewup
         brew update
         brew upgrade
+    end
+
+    # Set light theme if dark theme is not set in macos
+    if not defaults read -g AppleInterfaceStyle 2> /dev/null
+        lightTheme
     end
 else if test -e /etc/os-release
     # Linux stuff
@@ -215,17 +231,6 @@ function up
         flutter upgrade
     end
 end
-
-function darkTheme
-    set -Ux BAT_THEME Monokai Extended
-end
-
-function lightTheme
-    set -Ux BAT_THEME Monokai Extended Light
-end
-
-# By default use the dark theme
-darkTheme
 
 # For running minio in a development envourment
 # I don't like wasting cpu power nor do i want to have a program i don't usually use running in the background.
