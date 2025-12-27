@@ -78,11 +78,6 @@ else
     set -Ux EDITOR nano
 end
 
-# some distros install the open source edition of vs-code, bind that to code if that's the case
-if type -q code-oss
-    alias code='code-oss'
-end
-
 if test -d ~/.antigravity/antigravity
    set -x PATH $HOME/.antigravity/antigravity/bin $PATH
 end
@@ -118,6 +113,7 @@ end
 alias ips='ip addr | grep "\([0-9]\{1,3\}\.\)\{3\}\([0-9]\{1,3\}\)" | sed -e "s/^[ \t]*//" | grep -v "127\.0\.0\.1"'
 
 # Bind cat to bat -p, this makes using cat sooo much better
+# https://github.com/sharkdp/bat
 if type -q bat
     alias cat='bat -p'
 end
@@ -126,19 +122,23 @@ if type -q batcat
 end
 
 # Alias zeditor to zed
+# https://zed.dev/
 if type -q zeditor
     alias zed='zeditor'
 end
 
 # Bind ls to exa or eza, they has some nice things that make using ls just a bit better
+# https://github.com/ogham/exa
 if type -q exa
     alias ls='exa'
 end
+# https://github.com/eza-community/eza
 if type -q eza
     alias ls='eza'
 end
 
 # Set a docker alias to podman as most docker commands work with podman
+# https://podman.io/
 if type -q podman
     alias docker='podman'
 end
@@ -191,6 +191,7 @@ else if test -e /etc/os-release
         sudo apt autoremove -y
     end
 
+    # https://github.com/jbensmann/mouseless
     if test -e ~/go/bin/mouseless
         alias nomouse='sudo ~/go/bin/mouseless --config ~/Documents/dotfiles/mouseless/config.yaml'
     end
@@ -242,6 +243,7 @@ end
 alias startMinio='docker run -e "MINIO_ACCESS_KEY=BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm" -e "MINIO_SECRET_KEY=BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R" -it --rm -p 9000:9000 --name minio -v /mnt/data:/data minio/minio server /data'
 
 # Run minio locally
+# https://www.min.io/
 function startMinioLocal
     export MINIO_ACCESS_KEY="BByNC8gT7WEaT5QOJLHhwBywds8e4iSaZSrwduhsm"
     export MINIO_SECRET_KEY="BcJKJBTxw8YLg9ouEETQXywTCZkxeXz28GYmAYW7R"
@@ -257,6 +259,7 @@ function start_meilisearch
 end
 
 # Below is the nai shell config:
+# https://github.com/oh-my-fish/theme-nai
 function _git_branch_name
   echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
 end
