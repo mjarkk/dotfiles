@@ -190,6 +190,10 @@ else if test -e /etc/os-release
         sudo apt upgrade -y
         sudo apt autoremove -y
     end
+
+    if test -e ~/go/bin/mouseless
+        alias nomouse='sudo ~/go/bin/mouseless --config ~/.config/mouseless/config.yaml'
+    end
 end
 
 function up
