@@ -192,7 +192,7 @@ else if test -e /etc/os-release
     end
 
     if test -e ~/go/bin/mouseless
-        alias nomouse='sudo ~/go/bin/mouseless --config ~/.config/mouseless/config.yaml'
+        alias nomouse='sudo ~/go/bin/mouseless --config ~/Documents/dotfiles/mouseless/config.yaml'
     end
 end
 

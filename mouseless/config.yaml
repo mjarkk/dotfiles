@@ -1,0 +1,28 @@
+baseMouseSpeed: 750.0
+baseScrollSpeed: 20.0
+
+# the rest of the config defines the layers with their bindings
+layers:
+  - name: initial
+    bindings:
+      # when tab is held and another key pressed, activate mouse layer
+      tab: tap-hold-next tab ; toggle-layer mouse ; 500
+      # when a is held for 300ms, activate mouse layer
+      a: tap-hold a ; toggle-layer mouse ; 300
+  - name: mouse
+    passThrough: true
+    bindings:
+      # Keep the mouse layer active
+      space: layer mouse
+      # Quite the mouse layer
+      q: layer initial
+      l: move  1  0
+      j: move -1  0
+      k: move  0  1
+      i: move  0 -1
+      p: scroll up
+      n: scroll down
+      e: speed 0.2
+      f: button left
+      d: button middle
+      s: button right
