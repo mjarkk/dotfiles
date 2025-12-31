@@ -174,6 +174,14 @@ if uname | grep Darwin >/dev/null
         lightTheme
     end
 else if test -e /etc/os-release
+    if test -e /var/lib/flatpak/exports/bin
+        set -x PATH /var/lib/flatpak/exports/bin $PATH
+    end
+    if not type -q zed && type -q dev.zed.Zed
+        # Alias the flatpak version of zed to zed if it has not already been aliased
+        alias zed='dev.zed.Zed'
+    end
+
     # Linux stuff
     alias memoryspeed='sudo lshw -short -C memory | grep "DIMM"'
     alias bios='ss reboot --firmware-setup'
