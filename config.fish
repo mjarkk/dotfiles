@@ -208,6 +208,8 @@ else if test -e /etc/os-release
     if test -e ~/go/bin/mouseless
         alias nomouse='sudo ~/go/bin/mouseless --config ~/Documents/dotfiles/mouseless/config.yaml'
     end
+
+    alias serverPostSetup='~/Documents/dotfiles/server/postSetup.sh'
 end
 
 function up
