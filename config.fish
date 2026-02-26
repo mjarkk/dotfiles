@@ -10,7 +10,10 @@ set -x PATH /opt/local/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 
 # Common linux things..
-# set -x PATH $HOME/Documents/flutter/bin $PATH
+if test -d ~/.deno/bin
+    set -x PATH $HOME/Documents/flutter/bin $PATH
+end
+
 # set -Ux CHROME_EXECUTABLE "$HOME/.local/share/flatpak/exports/bin/com.google.Chrome"
 
 if test -d ~/.deno/bin
