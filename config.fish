@@ -251,7 +251,7 @@ function up
         rusup
     end
     if type -q flutter
-        flutter upgrade
+        flutter upgrade --force
     end
 end
 
