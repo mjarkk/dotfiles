@@ -273,7 +273,7 @@ function startMinioLocal
 end
 
 function start_meilisearch
-  meilisearch --master-key Rk5Tv0f8wPD07RVksZvDDnceLvEEtSbT56plG78UQ --db-path /Users/mark/.data.ms
+  meilisearch --master-key Rk5Tv0f8wPD07RVksZvDDnceLvEEtSbT56plG78UQ --db-path "$HOME/.data.ms"
 end
 
 # Below is the nai shell config:
