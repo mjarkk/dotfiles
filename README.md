@@ -3,5 +3,5 @@
 ## Fish
 
 ```bash
-cp config.fish ~/.config/fish/config.fish
+ln -s $(pwd)/config.fish ~/.config/fish/config.fish
 ```

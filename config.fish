@@ -224,22 +224,22 @@ function up
         set ID_LIKE (grep "^ID_LIKE=" /etc/os-release | sed 's/ID_LIKE=//' | sed 's/"//g')
         set ID (grep "^ID=" /etc/os-release | sed 's/ID=//' | sed 's/"//g')
 
-        if [ $ID = arch ] || [ $ID_LIKE = arch ]
+        if [ "$ID" = arch ] || [ "$ID_LIKE" = arch ]
             if type -q yay
                 yayup
             else
                 pacup
             end
-        else if [ $ID_LIKE = 'ubuntu debian' ] || [ $ID_LIKE = debian ] || [ $ID_LIKE = ubuntu ] || [ $ID = ubuntu ] || [ $ID = debian ]
+        else if [ "$ID_LIKE" = 'ubuntu debian' ] || [ "$ID_LIKE" = debian ] || [ "$ID_LIKE" = ubuntu ] || [ "$ID" = ubuntu ] || [ "$ID" = debian ]
             aptup
-        else if [ $ID = solus ] || [ $ID_LIKE = solus ]
+        else if [ "$ID" = solus ] || [ "$ID_LIKE" = solus ]
             eoup
-        else if [ $ID = void ] || [ $ID_LIKE = void ]
+        else if [ "$ID" = void ] || [ "$ID_LIKE" = void ]
             xbpsup
-        else if [ $ID = fedora ] || [ $ID_LIKE = fedora ]
+        else if [ "$ID" = fedora ] || [ "$ID_LIKE" = fedora ]
             dnfup
         else
-            echo 'Unknown distro: $ID'
+            echo "Unknown distro: $ID"
         end
     end
 
