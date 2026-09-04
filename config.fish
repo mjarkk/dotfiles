@@ -61,6 +61,10 @@ if type -q zoxide
     zoxide init fish | source
 end
 
+if test -e ~/.local/bin/mise
+    $HOME/.local/bin/mise activate fish | source
+end
+
 # On some linux distro's there is a popup for filling in the gpg passphrase and i don't like that
 set -Ux GPG_AGENT_INFO ""
 
