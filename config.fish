@@ -9,12 +9,13 @@ end
 set -x PATH /opt/local/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 
-# Common linux things..
-if test -d ~/.deno/bin
-    set -x PATH $HOME/Documents/flutter/bin $PATH
+if test -d ~/.local/share/flatpak/exports/bin/com.google.Chrome
+    set -Ux CHROME_EXECUTABLE "$HOME/.local/share/flatpak/exports/bin/com.google.Chrome"
 end
 
-# set -Ux CHROME_EXECUTABLE "$HOME/.local/share/flatpak/exports/bin/com.google.Chrome"
+if test -d ~/Documents/flutter/bin
+    set -x PATH $HOME/Documents/flutter/bin $PATH
+end
 
 if test -d ~/.deno/bin
     set -x PATH $HOME/.deno/bin $PATH
@@ -278,6 +279,10 @@ end
 
 function start_meilisearch
   meilisearch --master-key Rk5Tv0f8wPD07RVksZvDDnceLvEEtSbT56plG78UQ --db-path "$HOME/.data.ms"
+end
+
+if test "$TERM" = xterm-ghostty
+    alias ssh='ghostty +ssh --'
 end
 
 # Below is the nai shell config:
