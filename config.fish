@@ -112,6 +112,16 @@ alias git-stat='git diff --stat' # Show some nice git stats
 alias gitstat='git-stat'
 alias gitStat='git-stat'
 function fuckit
+    if not contains -- --fuckit $argv
+        git fetch --quiet; or return 1
+        set -l remote_ref (git rev-parse --abbrev-ref '@{u}' 2>/dev/null; or echo origin/(git branch --show-current))
+        if git rev-parse --verify --quiet $remote_ref >/dev/null
+            and not git merge-base --is-ancestor $remote_ref HEAD
+            echo "fuckit: $remote_ref has commits that are not in HEAD, aborting so they don't get overwritten (fuckit --fuckit to overwrite anyway):" >&2
+            git log --oneline HEAD..$remote_ref >&2
+            return 1
+        end
+    end
     git add .
     git commit --amend --no-edit
     git push -f
