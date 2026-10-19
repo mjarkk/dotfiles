@@ -108,9 +108,7 @@ alias untar='tar xvzf'
 
 # Git shortcuts
 alias branch="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
-alias git-stat='git diff --stat' # Show some nice git stats
-alias gitstat='git-stat'
-alias gitStat='git-stat'
+
 function fuckit
     if not contains -- --fuckit $argv
         git fetch --quiet; or return 1
@@ -125,6 +123,24 @@ function fuckit
     git add .
     git commit --amend --no-edit
     git push -f
+end
+
+function finishit
+    if test (count $argv) -ne 1
+        echo 'usage: finishit "commit message"' >&2
+        return 1
+    end
+    set -l branch (git branch --show-current); or return 1
+    set -l default_branch (git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | string replace origin/ '')
+    if test -z "$branch"
+        or contains -- $branch $default_branch master main develop development dev production prod staging stage acceptance release
+        echo "finishit: refusing to run on branch '$branch'" >&2
+        return 1
+    end
+    git add .; or return 1
+    git commit -m $argv[1]; or return 1
+    git push -u origin HEAD; or return 1
+    gh pr create --title $argv[1] --body ""
 end
 
 # easially find all systems ips
