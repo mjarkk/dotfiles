@@ -204,7 +204,7 @@ if uname | grep Darwin >/dev/null
     end
 
     # Set light theme if dark theme is not set in macos
-    if not defaults read -g AppleInterfaceStyle 2> /dev/null
+    if not defaults read -g AppleInterfaceStyle &>/dev/null
         lightTheme
     end
 else if test -e /etc/os-release
