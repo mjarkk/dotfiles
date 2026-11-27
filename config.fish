@@ -34,6 +34,10 @@ if test -d ~/.ghcup/bin
     set -x PATH $HOME/.ghcup/bin $PATH
 end
 
+if test -d /Applications/Orca.app/Contents/Resources/bin
+    set -x PATH $PATH /Applications/Orca.app/Contents/Resources/bin
+end
+
 # Php shell vars
 if type -q php
     set -x PATH $HOME/.composer/vendor/bin $PATH
